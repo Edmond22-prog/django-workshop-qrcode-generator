@@ -1,3 +1,5 @@
+import base64
+import io
 import uuid
 
 import qrcode
@@ -31,11 +33,12 @@ def generate_qr_code(data: str):
     qr.make(fit=True)
     img = qr.make_image(fill_color="black", back_color="white")
 
-    # buf = io.BytesIO()
-    # img.save(buf, format="PNG")
+    # Convert the image to bytes
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    img_bytes = buf.getvalue()
 
-    # img_bytes = buf.getvalue()
+    # Convert the image to base64
+    img_base64 = base64.b64encode(img_bytes).decode()
 
-    # img_base64 = base64.b64encode(img_bytes).decode()
-
-    # return img_base64
+    return img_base64

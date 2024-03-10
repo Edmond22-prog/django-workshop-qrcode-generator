@@ -1,0 +1,44 @@
+{% include './base.html' %}
+
+{% block title %}
+    <title>Generate a QR Code</title>
+{% endblock title %}
+
+
+{% block body_content %}
+<div class="container">
+    <h1>Register an employee</h1><br>
+    <div class="row">
+        <div class="col-md-6">
+            <form method="POST" action={% url 'register' %} class="column mb-2">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="fullname_id" class="form-label">Fullname</label>
+                  <input type="text" class="form-control" id="fullname_id" name="fullname" value={{ fullname | default:'' }}>
+                </div>
+                <div class="mb-3">
+                    <label for="email_id" class="form-label">Email</label>
+                    <input type="text" class="form-control" id="email_id" name="email" value={{ email | default:'' }}>
+                </div>
+                <div class="mb-3">
+                    <label for="department_id" class="form-label">Department</label>
+                    <select class="form-select form-select-lg mb-3" id="department_id" name="department" value={{ department | default:'' }}>
+                        <option selected>Open this select menu</option>
+                        <option value="IT">IT</option>
+                        <option value="HR">HR</option>
+                        <option value="Finance">Finance</option>
+                    </select>
+                </div>
+                
+                {% if not registered %}
+                    <button type="submit" class="btn btn-primary">Register</button>
+                {% endif %}
+            </form>
+        </div>
+        <div class="col-md-6">
+            <img src="{{ qr_code | default:'https://images.pexels.com/photos/360912/pexels-photo-360912.jpeg' }}" alt="QrCode" class="img-fluid">
+        </div>
+    </div>
+</div>
+{% endblock body_content %}
+    
