@@ -25,7 +25,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
-                <a class="btn btn-outline-success" role="button" href="{% url 'register' %}">Register Employee</a>
+                {% comment %} <a class="btn btn-outline-success" role="button" href="{% url 'register' %}">Register Employee</a> {% endcomment %}
+                <a class="btn btn-outline-success" role="button" href="{% url 'generate_qrcode' %}">Generate QRCode</a>
             </div>
         </div>
     </nav>

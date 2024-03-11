@@ -1,10 +1,9 @@
 from django.contrib import admin
 
-from website.models import Employee
+from website.models import DataInformation
 
 
-@admin.register(Employee)
-class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ("fullname", "email", "department")
-    list_filter = ("department",)
-    search_fields = ("fullname", "email")
+@admin.register(DataInformation)
+class DataInformationAdmin(admin.ModelAdmin):
+    list_display = ("uuid", "qr_code", "created_at")
+    search_fields = ("text_data",)
