@@ -4,7 +4,9 @@ from website.models import DataInformation
 
 
 def home(request):
-    return render(request, "website/index.html")
+    informations = DataInformation.objects.all().order_by("-created_at")
+    context = {"informations": informations}
+    return render(request, "website/index.html", context)
 
 
 def generate_qrcode(request):
@@ -30,3 +32,4 @@ def generate_qrcode(request):
             "qr_code": data_information.qr_code.url,
         }
         return render(request, "website/generate_qrcode.html", context)
+

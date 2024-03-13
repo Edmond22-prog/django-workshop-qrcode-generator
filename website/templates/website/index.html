@@ -6,47 +6,20 @@
 
 {% block body_content %}
 <div class="container">
-    <h1>Hello, world!</h1><br>
+    <br><h1>Welcome, Django Cameroon members !</h1><br>
     <div class="row row-cols-1 row-cols-md-5 g-4">
+    {% for info in informations %}
         <div class="col">
             <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="{{ info.qr_code.url }}" class="card-img-top" alt="QRCode">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{ info.uuid }}</h5>
+                    <p class="card-text">{{ info.text_data }}</p>
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a short card.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer.</p>
-                </div>
-            </div>
-        </div>
+
+    {% endfor %}
     </div>
 </div>
 {% endblock body_content %}
