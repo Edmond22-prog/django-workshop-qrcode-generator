@@ -31,3 +31,4 @@ def generate_qrcode(request):
             "qr_code": data_information.qr_code.url,
         }
         return render(request, "website/generate_qrcode.html", context)
+
