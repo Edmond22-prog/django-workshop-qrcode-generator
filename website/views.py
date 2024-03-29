@@ -4,7 +4,8 @@ from website.models import DataInformation
 
 
 def home(request):
-    return render(request, "website/index.html")
+    all_data = DataInformation.objects.all().order_by("-created_at")
+    return render(request, "website/index.html", {"all_data": all_data})
 
 
 def generate_qrcode(request):
